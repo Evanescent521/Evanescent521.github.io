@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="Powered by Algolia Cloud
+    
+    
+
+
+
+
+    // 配置 Algolia (已填入安全密钥)
+    const client = algoliasearch(&#39;5KQI8J7ZCC&#39;, &#39;530ac637a93bbe69d377d96b90c598ba&#39;);">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="John Doe">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Algolia 星际网络检索"/>
+    
+
+    <!--Open Graph Description-->
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Astra"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    
+        <meta name="twitter:card" content="summary" />
+    
+    
+    
+
+    <!-- Title -->
+    
+    <title>Algolia 星际网络检索 - Astra</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//cdn.staticfile.net/twitter-bootstrap/4.0.0-alpha.2/css/bootstrap.min.css">
+
+    <!-- Custom Fonts -->
+    <link href="//cdn.staticfile.net/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//cdn.staticfile.net/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//cdn.staticfile.net/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdn.staticfile.net/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    <!-- Google Analytics -->
+    
+
+
+    <!-- Favicon -->
+    <link rel="icon" href="/img/favicon.png" type="image/x-icon">
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    主页
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    档案
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/search/">
+                    检索
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    分类
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact/">
+                    联系我
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<!-- Back Button Logic -->
+
+
+
+    <nav class="nav-left">
+        <a href="/" id="back-button" title="返回上一级"></a>
+    </nav>
+    <script>
+        (function() {
+            var backBtn = document.getElementById('back-button');
+            if (backBtn && document.referrer && document.referrer.includes(window.location.host)) {
+                backBtn.onclick = function(e) {
+                    e.preventDefault();
+                    history.back();
+                };
+            }
+        })();
+    </script>
+
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        
+            <header>
+    <div class="logo">
+        <a href="/">
+            <img src="/img/star.png" class="logo-img" alt="Logo">
+        </a>
+        
+    </div>
+</header>
+            <section class="main">
+                <div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/search/index.html">
+                Algolia 星际网络检索
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                    
+                            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+                    <!-- Post Content -->
+                    <div class="search-container">
+    <input type="text" id="algolia-search-input" placeholder="输入关键词，连接 Algolia 毫秒级云检索..." class="search-input" autocomplete="off">
+    <div class="algolia-logo" style="text-align: right; margin-bottom: 20px; font-size: 0.8em; color: rgba(215, 236, 255, 0.4);">
+        <i class="fa fa-search"></i> Powered by <strong>Algolia</strong> Cloud
+    </div>
+    <div id="algolia-search-result" class="search-result-wrapper"></div>
+</div>
+
+<script src="https://cdn.staticfile.net/algoliasearch/4.14.2/algoliasearch-lite.umd.js"></script>
+<script>
+    // 配置 Algolia (已填入安全密钥)
+    const client = algoliasearch('5KQI8J7ZCC', '530ac637a93bbe69d377d96b90c598ba');
+    const index = client.initIndex('astra_blog');
+
+    const searchInput = document.getElementById('algolia-search-input');
+    const searchResult = document.getElementById('algolia-search-result');
+
+    searchInput.addEventListener('input', function() {
+        const query = this.value.trim();
+        if (query.length === 0) {
+            searchResult.innerHTML = '';
+            return;
+        }
+
+        index.search(query, { hitsPerPage: 10 }).then(({ hits }) => {
+            if (hits.length === 0) {
+                searchResult.innerHTML = '<p style="color: rgba(215,236,255,0.4); text-align: center;">宇宙深处没有找到相关代码...</p>';
+                return;
+            }
+            
+            let html = '<ul class="search-result-list">';
+            hits.forEach(hit => {
+                let title = hit._highlightResult.title ? hit._highlightResult.title.value : hit.title;
+                let contentExcerpt = hit._highlightResult.content ? hit._highlightResult.content.value : hit.content;
+                html += `
+                    <li>
+                        <a href="/${hit.path}" class="search-result-title">${title}</a>
+                        <p class="search-result-snippet">${contentExcerpt.substring(0, 100)}...</p>
+                    </li>
+                `;
+            });
+            html += '</ul>';
+            searchResult.innerHTML = html;
+        }).catch(err => {
+            console.error(err);
+            searchResult.innerHTML = '<p style="color: red;">Algolia检索中枢网络连接断开 (请检查密钥)。</p>';
+        });
+    });
+</script>
+
+<style>
+.search-input { width: 100%; padding: 15px 20px; background: rgba(17, 58, 71, 0.2); border: 1px solid rgba(215, 236, 255, 0.4); border-radius: 8px; color: #d7ecff; font-size: 1.1em; outline: none; transition: all 0.3s; margin-bottom: 10px; font-family: inherit; }
+.search-input:focus { border-color: rgba(34, 141, 255, 0.8); box-shadow: 0 0 20px rgba(34, 141, 255, 0.3); background: rgba(17, 58, 71, 0.4); }
+.search-result-list { list-style: none; padding-left: 0; }
+.search-result-list li { margin-bottom: 25px; padding-bottom: 25px; border-bottom: 1px dashed rgba(215, 236, 255, 0.1); }
+.search-result-title { font-size: 1.3em; font-weight: bold; color: #fff; text-decoration: none; transition: all 0.3s; }
+.search-result-title:hover { color: #228dff; text-shadow: 0 0 10px rgba(34,141,255,0.4); }
+.search-result-title em { font-style: normal; color: #228dff; font-weight: bold; background: rgba(34, 141, 255, 0.2); padding: 0 4px; border-radius: 3px; }
+.search-result-snippet { color: rgba(215, 236, 255, 0.6); margin-top: 12px; font-size: 0.95em; line-height: 1.6; }
+.search-result-snippet em { font-style: normal; color: #228dff; font-weight: bold; background: rgba(34, 141, 255, 0.2); padding: 0 4px; border-radius: 3px; }
+</style>
+
+    </div>
+
+    <!-- View Counter -->
+    
+
+            <!-- Post Navigation -->
+            
+
+                    <!-- Comments -->
+                    
+
+</div>
+            </section>
+        
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-contact">
+                <h2><a href="/contact/">联系我</a></h2>
+                <p>
+                    山河为志，宇宙为疆。循此苦旅，以达星辰。
+                </p>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4 footer-friends">
+    <h2>友情链接</h2>
+    <ul>
+        <li>
+            <a class="footer-post" href="https://fartmonarch.xyz" target="_blank">Fartmonarch</a>
+        </li>
+        <li>
+            <a class="footer-post" href="https://bigpeter.top" target="_blank">BigPeter</a>
+        </li>
+        <li>
+            <a class="footer-post" href="https://jokerlove0626.github.io" target="_blank">JokerLove</a>
+        </li>
+    </ul>
+</div>
+            
+<div class="col-xs-6 col-sm-6 col-md-4 col-lg-4 footer-categories">
+    <h2>分类</h2>
+    <ul>
+        
+        <li>
+            <a class="footer-post" href="/categories/%E6%8A%80%E6%9C%AF/Agent/">Agent</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/%E6%8A%80%E6%9C%AF/MySQL/">MySQL</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/%E6%8A%80%E6%9C%AF/Redis/">Redis</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/%E6%95%99%E7%A8%8B/Hexo/">Hexo</a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    &copy; 2026 Astra. All right reserved | Design & Hexo Jonathan Klughertz
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+<!-- jQuery -->
+<script src="//cdn.staticfile.net/jquery/2.1.4/jquery.min.js"></script>
+
+<!-- Tween Max -->
+<script src="//cdn.staticfile.net/gsap/1.18.5/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdn.staticfile.net/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Custom JavaScript -->
+
+<script src="/js/main.js"></script>
+
+
+<!-- Disqus Comments -->
+
+
+
+<!-- Busuanzi Analytics -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+</body>
+
+</html>
+<!-- Rebuild Trigger V1 -->

@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="两两交换链表中的节点1. 题目描述
+提示题目链接：https://leetcode.cn/problems/swap-nodes-in-pairs/
+
+2. 解题思路核心总结
+核心思想：重新建立指向关系。引入 dummy 节点保证逻辑一致。通过三步翻转法：1号指向3号，2号指向1号，前驱指向2号。
+">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="John Doe">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="两两交换链表中的节点"/>
+    
+
+    <!--Open Graph Description-->
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Astra"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    
+        <meta name="twitter:card" content="summary" />
+    
+    
+    
+
+    <!-- Title -->
+    
+    <title>两两交换链表中的节点 - Astra</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//cdn.staticfile.net/twitter-bootstrap/4.0.0-alpha.2/css/bootstrap.min.css">
+
+    <!-- Custom Fonts -->
+    <link href="//cdn.staticfile.net/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//cdn.staticfile.net/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//cdn.staticfile.net/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdn.staticfile.net/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    <!-- Google Analytics -->
+    
+
+
+    <!-- Favicon -->
+    <link rel="icon" href="/img/favicon.png" type="image/x-icon">
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    主页
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    档案
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/search/">
+                    检索
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    分类
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact/">
+                    联系我
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<!-- Back Button Logic -->
+
+
+
+    <nav class="nav-left">
+        <a href="/categories/%E7%AE%97%E6%B3%95/%E9%93%BE%E8%A1%A8/" id="back-button" title="返回上一级"></a>
+    </nav>
+    <script>
+        (function() {
+            var backBtn = document.getElementById('back-button');
+            if (backBtn && document.referrer && document.referrer.includes(window.location.host)) {
+                backBtn.onclick = function(e) {
+                    e.preventDefault();
+                    history.back();
+                };
+            }
+        })();
+    </script>
+
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/">
+            <img src="/img/star.png" class="logo-img" alt="Logo">
+        </a>
+        
+    </div>
+</header>
+
+        <section class="main">
+            <div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2026/04/05/%E7%AE%97%E6%B3%95-%E9%93%BE%E8%A1%A8-%E4%B8%A4%E4%B8%A4%E4%BA%A4%E6%8D%A2%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E8%8A%82%E7%82%B9/">
+                两两交换链表中的节点
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">
+                    2026-04-05
+                </span>
+                
+                    
+                            
+                                <span class="category">
+                                    <a href="/categories/算法/">算法</a>
+                                </span>
+                                
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+                    <!-- Post Content -->
+                    <h1 id="两两交换链表中的节点"><a href="#两两交换链表中的节点" class="headerlink" title="两两交换链表中的节点"></a>两两交换链表中的节点</h1><h2 id="1-题目描述"><a href="#1-题目描述" class="headerlink" title="1. 题目描述"></a>1. 题目描述</h2><blockquote>
+<p><strong>提示</strong><br>题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/swap-nodes-in-pairs/">https://leetcode.cn/problems/swap-nodes-in-pairs/</a></p>
+</blockquote>
+<h2 id="2-解题思路"><a href="#2-解题思路" class="headerlink" title="2. 解题思路"></a>2. 解题思路</h2><h3 id="核心总结"><a href="#核心总结" class="headerlink" title="核心总结"></a>核心总结</h3><ul>
+<li><strong>核心思想</strong>：重新建立指向关系。引入 <code>dummy</code> 节点保证逻辑一致。通过三步翻转法：1号指向3号，2号指向1号，前驱指向2号。</li>
+</ul>
+<h3 id="💡-易错点"><a href="#💡-易错点" class="headerlink" title="💡 易错点"></a>💡 易错点</h3><ol>
+<li>容易形成环：修改指向前需利用局部变量暂存节点。</li>
+<li>循环条件：必须同时检查 <code>pre.next</code> (奇数长) 和 <code>pre.next.next</code> (偶数长)，且顺序不能反。</li>
+</ol>
+<h2 id="3-代码实现"><a href="#3-代码实现" class="headerlink" title="3. 代码实现"></a>3. 代码实现</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"> *     ListNode() &#123;&#125;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"> *     ListNode(int val) &#123; this.val = val; &#125;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"> *     ListNode(int val, ListNode next) &#123; this.val = val; this.next = next; &#125;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> ListNode <span class="title function_">swapPairs</span><span class="params">(ListNode head)</span> &#123;</span><br><span class="line"></span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">dummy</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ListNode</span>(<span class="number">0</span>,head);</span><br><span class="line"></span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">pre</span> <span class="operator">=</span> dummy;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(pre.next != <span class="literal">null</span> &amp;&amp; pre.next.next != <span class="literal">null</span>)&#123;</span><br><span class="line"></span><br><span class="line">            <span class="type">ListNode</span> <span class="variable">cur</span> <span class="operator">=</span> pre.next;</span><br><span class="line"></span><br><span class="line">            <span class="type">ListNode</span> <span class="variable">next</span> <span class="operator">=</span> pre.next.next;</span><br><span class="line"></span><br><span class="line">            cur.next = next.next;</span><br><span class="line"></span><br><span class="line">            next.next = cur;</span><br><span class="line"></span><br><span class="line">            pre.next = next;</span><br><span class="line"></span><br><span class="line">            pre = cur;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> dummy.next;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-复杂度分析"><a href="#4-复杂度分析" class="headerlink" title="4. 复杂度分析"></a>4. 复杂度分析</h2><ul>
+<li><strong>时间复杂度</strong>：$O(n)$</li>
+<li><strong>空间复杂度</strong>：$O(1)$</li>
+</ul>
+<h2 id="5-总结与反思"><a href="#5-总结与反思" class="headerlink" title="5. 总结与反思"></a>5. 总结与反思</h2><hr>
+
+    </div>
+
+    <!-- View Counter -->
+    
+        <div
+            style="text-align: center; margin-top: 40px; margin-bottom: 20px; font-size: 0.9em; color: rgba(215, 236, 255, 0.5); opacity: 0.8; letter-spacing: 1px;">
+            <i class="fa fa-eye" style="margin-right: 5px;"></i> 本文已被观测了<span id="busuanzi_value_page_pv"
+                style="color: #228dff; font-weight: bold;"><i class="fa fa-spinner fa-spin"></i></span> 次
+        </div>
+        
+
+            <!-- Post Navigation -->
+            
+                <div class="post-navigation">
+                    
+                        <a href="/2026/04/06/%E7%AE%97%E6%B3%95-%E9%93%BE%E8%A1%A8-%E7%A7%BB%E9%99%A4%E9%93%BE%E8%A1%A8%E5%85%83%E7%B4%A0/" class="nav-prev">&laquo; 上一篇</a>
+                        
+
+                                <a href="/" class="nav-home">主页</a>
+
+                                
+                                    <a href="/2026/04/04/%E7%AE%97%E6%B3%95-%E6%95%B0%E7%BB%84-%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5%20II/" class="nav-next">下一篇 &raquo;</a>
+                                    
+                </div>
+                
+
+                    <!-- Comments -->
+                    
+
+</div>
+        </section>
+
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-contact">
+                <h2><a href="/contact/">联系我</a></h2>
+                <p>
+                    山河为志，宇宙为疆。循此苦旅，以达星辰。
+                </p>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4 footer-friends">
+    <h2>友情链接</h2>
+    <ul>
+        <li>
+            <a class="footer-post" href="https://fartmonarch.xyz" target="_blank">Fartmonarch</a>
+        </li>
+        <li>
+            <a class="footer-post" href="https://bigpeter.top" target="_blank">BigPeter</a>
+        </li>
+        <li>
+            <a class="footer-post" href="https://jokerlove0626.github.io" target="_blank">JokerLove</a>
+        </li>
+    </ul>
+</div>
+            
+<div class="col-xs-6 col-sm-6 col-md-4 col-lg-4 footer-categories">
+    <h2>分类</h2>
+    <ul>
+        
+        <li>
+            <a class="footer-post" href="/categories/%E6%8A%80%E6%9C%AF/Agent/">Agent</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/%E6%8A%80%E6%9C%AF/MySQL/">MySQL</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/%E6%8A%80%E6%9C%AF/Redis/">Redis</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/%E6%95%99%E7%A8%8B/Hexo/">Hexo</a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    &copy; 2026 Astra. All right reserved | Design & Hexo Jonathan Klughertz
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+<!-- jQuery -->
+<script src="//cdn.staticfile.net/jquery/2.1.4/jquery.min.js"></script>
+
+<!-- Tween Max -->
+<script src="//cdn.staticfile.net/gsap/1.18.5/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdn.staticfile.net/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Custom JavaScript -->
+
+<script src="/js/main.js"></script>
+
+
+<!-- Disqus Comments -->
+
+
+
+<!-- Busuanzi Analytics -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+</body>
+
+</html>
+<!-- Rebuild Trigger V1 -->

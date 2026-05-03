@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="本文是关于如何使用 Hexo 框架结合 GitHub Pages 零成本搭建个人静态博客的完整流程记录，适合所有希望拥有一片属于自己的互联网精神自留地的开发者。
+
+1. 为什么选择 Hexo？对于写代码的人来说，相较于沉重臃肿的动态博客系统（如 WordPress），Hexo 是一个基于 Node.">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="John Doe">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="从零开始：基于 Hexo 与 GitHub Pages 搭建个人博客"/>
+    
+
+    <!--Open Graph Description-->
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Astra"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    
+        <meta name="twitter:card" content="summary" />
+    
+    
+    
+
+    <!-- Title -->
+    
+    <title>从零开始：基于 Hexo 与 GitHub Pages 搭建个人博客 - Astra</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//cdn.staticfile.net/twitter-bootstrap/4.0.0-alpha.2/css/bootstrap.min.css">
+
+    <!-- Custom Fonts -->
+    <link href="//cdn.staticfile.net/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//cdn.staticfile.net/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//cdn.staticfile.net/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdn.staticfile.net/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    <!-- Google Analytics -->
+    
+
+
+    <!-- Favicon -->
+    <link rel="icon" href="/img/favicon.png" type="image/x-icon">
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    主页
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    档案
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/search/">
+                    检索
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    分类
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact/">
+                    联系我
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<!-- Back Button Logic -->
+
+
+
+    <nav class="nav-left">
+        <a href="/categories/%E6%95%99%E7%A8%8B/Hexo/" id="back-button" title="返回上一级"></a>
+    </nav>
+    <script>
+        (function() {
+            var backBtn = document.getElementById('back-button');
+            if (backBtn && document.referrer && document.referrer.includes(window.location.host)) {
+                backBtn.onclick = function(e) {
+                    e.preventDefault();
+                    history.back();
+                };
+            }
+        })();
+    </script>
+
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/">
+            <img src="/img/star.png" class="logo-img" alt="Logo">
+        </a>
+        
+    </div>
+</header>
+
+        <section class="main">
+            <div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2026/03/31/%E6%95%99%E7%A8%8B-Hexo-%E6%90%AD%E5%BB%BA%E6%95%99%E5%AD%A6/">
+                从零开始：基于 Hexo 与 GitHub Pages 搭建个人博客
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">
+                    2026-03-31
+                </span>
+                
+                    
+                            
+                                <span class="category">
+                                    <a href="/categories/教程/">教程</a>
+                                </span>
+                                
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+                    <!-- Post Content -->
+                    <blockquote>
+<p>本文是关于如何使用 Hexo 框架结合 GitHub Pages 零成本搭建个人静态博客的完整流程记录，适合所有希望拥有一片属于自己的互联网精神自留地的开发者。</p>
+</blockquote>
+<h2 id="1-为什么选择-Hexo？"><a href="#1-为什么选择-Hexo？" class="headerlink" title="1. 为什么选择 Hexo？"></a>1. 为什么选择 Hexo？</h2><p>对于写代码的人来说，相较于沉重臃肿的动态博客系统（如 WordPress），Hexo 是一个基于 Node.js 的<strong>超强静态博客框架</strong>。<br>它的核心优势非常明显：</p>
+<ul>
+<li><strong>速度极快</strong>：数百篇文章只需几秒即可渲染成纯 HTML，部署在任何静态托管服务上秒开。</li>
+<li><strong>支持 Markdown</strong>：使用程序员最爱的强力标记语言进行写作。</li>
+<li><strong>零成本托管</strong>：完美支持一键部署到 GitHub Pages 等服务。</li>
+</ul>
+<hr>
+<h2 id="2-环境配置与工具准备"><a href="#2-环境配置与工具准备" class="headerlink" title="2. 环境配置与工具准备"></a>2. 环境配置与工具准备</h2><p>在开始搭建之前，我们需要确保电脑里安装了两个前置核心工具：</p>
+<ol>
+<li><strong>Node.js</strong>：因为 Hexo 是基于 Node 开发的，提供了执行环境。</li>
+<li><strong>Git</strong>：版本控制工具，用于将最终编译的博客项目推送到 GitHub。</li>
+</ol>
+<p>安装完成后，可以在终端或控制台输入以下指令验证：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br><span class="line">git --version</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="3-安装与初始化-Hexo"><a href="#3-安装与初始化-Hexo" class="headerlink" title="3. 安装与初始化 Hexo"></a>3. 安装与初始化 Hexo</h2><p>准备好环境后，整个安装过程一气呵成。打开你的命令行，通过 npm 全局安装 hexo-cli：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+
+<p>紧接着，在你期望存放博客源码的目录（比如 <code>d:\hexo-blog</code>）下运行初始化命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo init hexo-blog</span><br><span class="line"><span class="built_in">cd</span> hexo-blog</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
+
+<p>这个时候，你的本地就已经诞生了一个基础的博客文件树了。输入 <code>hexo s</code> (server的缩写)，在浏览器打开 <code>http://localhost:4000</code> 即可预览默认界面！</p>
+<hr>
+<h2 id="4-将博客部署到星辰大海（GitHub-Pages）"><a href="#4-将博客部署到星辰大海（GitHub-Pages）" class="headerlink" title="4. 将博客部署到星辰大海（GitHub Pages）"></a>4. 将博客部署到星辰大海（GitHub Pages）</h2><p>本地只能自己看，我们需要将它推向互联网。</p>
+<h3 id="4-1-创建-GitHub-仓库"><a href="#4-1-创建-GitHub-仓库" class="headerlink" title="4.1 创建 GitHub 仓库"></a>4.1 创建 GitHub 仓库</h3><p>在 GitHub 创建一个全新的仓库，<strong>仓库名有着严格的规范</strong>，必须命名为：<code>你的用户名.github.io</code> （比如 <code>Evanescent521.github.io</code>）。</p>
+<h3 id="4-2-配置一键部署"><a href="#4-2-配置一键部署" class="headerlink" title="4.2 配置一键部署"></a>4.2 配置一键部署</h3><p>打开博客根目录下的核心配置文件 <code>_config.yml</code>，划到最底部，修改 <code>deploy</code> 字段如下（注意冒号后面有一个空格）：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">git@github.com:Evanescent521/Evanescent521.github.io.git</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">main</span></span><br></pre></td></tr></table></figure>
+
+<p>最后，安装一键部署的插件并执行推流指令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure>
+
+<p>至此，只要等待 1-2 分钟（GitHub 后台的构建时间），全世界就能通过 <code>你的用户名.github.io</code> 访问到你的专属空间了。</p>
+<hr>
+<h2 id="5-个性化：这才是极客该有的样子"><a href="#5-个性化：这才是极客该有的样子" class="headerlink" title="5. 个性化：这才是极客该有的样子"></a>5. 个性化：这才是极客该有的样子</h2><p>默认的 Landscape 主题显然无法满足个人的审美。在这个博客里，我使用了 <code>alpha-dust</code> 主题，并对其进行了修改：</p>
+<ul>
+<li><strong>动态标签特效</strong>：去除了原版冗余的日期与分类标签，改为纯净的大图与悬浮反馈。</li>
+<li><strong>自定义指针覆盖</strong>：抛弃了枯燥的白色箭头，修改 CSS 底层并分别注入了针对普通状态与超链接覆盖的全局特效光标 <code>.cur</code> 文件。</li>
+<li><strong>联系页面</strong>：通过嵌入 Steam 动态头像的 CDN 直链数据，强行绕开了跨域限制，点缀了交互代码。</li>
+</ul>
+<blockquote>
+<p><strong>Per aspera ad astra.</strong> (循此苦旅，以达星辰)</p>
+</blockquote>
+<p>建站只是我们漫长技术生涯最初的一小步。准备好一杯咖啡，打开编辑器，开始你的技术之旅吧！</p>
+
+    </div>
+
+    <!-- View Counter -->
+    
+        <div
+            style="text-align: center; margin-top: 40px; margin-bottom: 20px; font-size: 0.9em; color: rgba(215, 236, 255, 0.5); opacity: 0.8; letter-spacing: 1px;">
+            <i class="fa fa-eye" style="margin-right: 5px;"></i> 本文已被观测了<span id="busuanzi_value_page_pv"
+                style="color: #228dff; font-weight: bold;"><i class="fa fa-spinner fa-spin"></i></span> 次
+        </div>
+        
+
+            <!-- Post Navigation -->
+            
+                <div class="post-navigation">
+                    
+                        <a href="/2026/03/31/%E6%95%99%E7%A8%8B-Astra-Algolia%E6%90%9C%E7%B4%A2/" class="nav-prev">&laquo; 上一篇</a>
+                        
+
+                                <a href="/" class="nav-home">主页</a>
+
+                                
+                                    <a href="/2026/03/30/%E6%95%99%E7%A8%8B-Astra-%E6%AC%A2%E8%BF%8E/" class="nav-next">下一篇 &raquo;</a>
+                                    
+                </div>
+                
+
+                    <!-- Comments -->
+                    
+
+</div>
+        </section>
+
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-contact">
+                <h2><a href="/contact/">联系我</a></h2>
+                <p>
+                    山河为志，宇宙为疆。循此苦旅，以达星辰。
+                </p>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4 footer-friends">
+    <h2>友情链接</h2>
+    <ul>
+        <li>
+            <a class="footer-post" href="https://fartmonarch.xyz" target="_blank">Fartmonarch</a>
+        </li>
+        <li>
+            <a class="footer-post" href="https://bigpeter.top" target="_blank">BigPeter</a>
+        </li>
+        <li>
+            <a class="footer-post" href="https://jokerlove0626.github.io" target="_blank">JokerLove</a>
+        </li>
+    </ul>
+</div>
+            
+<div class="col-xs-6 col-sm-6 col-md-4 col-lg-4 footer-categories">
+    <h2>分类</h2>
+    <ul>
+        
+        <li>
+            <a class="footer-post" href="/categories/%E6%8A%80%E6%9C%AF/Agent/">Agent</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/%E6%8A%80%E6%9C%AF/MySQL/">MySQL</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/%E6%8A%80%E6%9C%AF/Redis/">Redis</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/%E6%95%99%E7%A8%8B/Hexo/">Hexo</a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    &copy; 2026 Astra. All right reserved | Design & Hexo Jonathan Klughertz
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+<!-- jQuery -->
+<script src="//cdn.staticfile.net/jquery/2.1.4/jquery.min.js"></script>
+
+<!-- Tween Max -->
+<script src="//cdn.staticfile.net/gsap/1.18.5/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdn.staticfile.net/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Custom JavaScript -->
+
+<script src="/js/main.js"></script>
+
+
+<!-- Disqus Comments -->
+
+
+
+<!-- Busuanzi Analytics -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+</body>
+
+</html>
+<!-- Rebuild Trigger V1 -->

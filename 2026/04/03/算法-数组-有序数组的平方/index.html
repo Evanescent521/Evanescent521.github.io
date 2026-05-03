@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="有序数组的平方1. 题目描述
+提示题目链接：https://leetcode.cn/problems/squares-of-a-sorted-array/description/
+
+2. 解题思路核心总结
+核心思想：利用数组有序的特性，最大值一定在两端。使用双指针从两边向中间移动，将平方数从大到小依">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="John Doe">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="有序数组的平方"/>
+    
+
+    <!--Open Graph Description-->
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Astra"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    
+        <meta name="twitter:card" content="summary" />
+    
+    
+    
+
+    <!-- Title -->
+    
+    <title>有序数组的平方 - Astra</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//cdn.staticfile.net/twitter-bootstrap/4.0.0-alpha.2/css/bootstrap.min.css">
+
+    <!-- Custom Fonts -->
+    <link href="//cdn.staticfile.net/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//cdn.staticfile.net/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//cdn.staticfile.net/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdn.staticfile.net/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    <!-- Google Analytics -->
+    
+
+
+    <!-- Favicon -->
+    <link rel="icon" href="/img/favicon.png" type="image/x-icon">
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    主页
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    档案
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/search/">
+                    检索
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    分类
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact/">
+                    联系我
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<!-- Back Button Logic -->
+
+
+
+    <nav class="nav-left">
+        <a href="/categories/%E7%AE%97%E6%B3%95/%E6%95%B0%E7%BB%84/" id="back-button" title="返回上一级"></a>
+    </nav>
+    <script>
+        (function() {
+            var backBtn = document.getElementById('back-button');
+            if (backBtn && document.referrer && document.referrer.includes(window.location.host)) {
+                backBtn.onclick = function(e) {
+                    e.preventDefault();
+                    history.back();
+                };
+            }
+        })();
+    </script>
+
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/">
+            <img src="/img/star.png" class="logo-img" alt="Logo">
+        </a>
+        
+    </div>
+</header>
+
+        <section class="main">
+            <div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2026/04/03/%E7%AE%97%E6%B3%95-%E6%95%B0%E7%BB%84-%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E7%9A%84%E5%B9%B3%E6%96%B9/">
+                有序数组的平方
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">
+                    2026-04-03
+                </span>
+                
+                    
+                            
+                                <span class="category">
+                                    <a href="/categories/算法/">算法</a>
+                                </span>
+                                
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+                    <!-- Post Content -->
+                    <h1 id="有序数组的平方"><a href="#有序数组的平方" class="headerlink" title="有序数组的平方"></a>有序数组的平方</h1><h2 id="1-题目描述"><a href="#1-题目描述" class="headerlink" title="1. 题目描述"></a>1. 题目描述</h2><blockquote>
+<p><strong>提示</strong><br>题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/squares-of-a-sorted-array/description/">https://leetcode.cn/problems/squares-of-a-sorted-array/description/</a></p>
+</blockquote>
+<h2 id="2-解题思路"><a href="#2-解题思路" class="headerlink" title="2. 解题思路"></a>2. 解题思路</h2><h3 id="核心总结"><a href="#核心总结" class="headerlink" title="核心总结"></a>核心总结</h3><ul>
+<li><strong>核心思想</strong>：利用数组有序的特性，最大值一定在两端。使用双指针从两边向中间移动，将平方数从大到小依次填入新数组。</li>
+</ul>
+<h3 id="💡-易错点"><a href="#💡-易错点" class="headerlink" title="💡 易错点"></a>💡 易错点</h3><p>由于要寻找“最大值”，新数组的填充应该从后往前执行。</p>
+<h2 id="3-代码实现"><a href="#3-代码实现" class="headerlink" title="3. 代码实现"></a>3. 代码实现</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span>[] sortedSquares(<span class="type">int</span>[] nums) &#123;</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> <span class="variable">l</span> <span class="operator">=</span> <span class="number">0</span>,r = nums.length - <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> <span class="variable">point</span> <span class="operator">=</span> nums.length - <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span>[] sq = <span class="keyword">new</span> <span class="title class_">int</span>[nums.length];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(l&lt;=r)&#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>(square(nums[l])&gt;square(nums[r]))&#123;</span><br><span class="line"></span><br><span class="line">                sq[point] = square(nums[l]);</span><br><span class="line"></span><br><span class="line">                point--;</span><br><span class="line"></span><br><span class="line">                l++;</span><br><span class="line"></span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line"></span><br><span class="line">                sq[point] = square(nums[r]);</span><br><span class="line"></span><br><span class="line">                point--;</span><br><span class="line"></span><br><span class="line">                r--;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> sq;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> <span class="title function_">square</span><span class="params">(<span class="type">int</span> n)</span> &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> n * n;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-复杂度分析"><a href="#4-复杂度分析" class="headerlink" title="4. 复杂度分析"></a>4. 复杂度分析</h2><ul>
+<li><strong>时间复杂度</strong>：$O(n)$</li>
+<li><strong>空间复杂度</strong>：$O(1)$</li>
+</ul>
+<h2 id="5-总结与反思"><a href="#5-总结与反思" class="headerlink" title="5. 总结与反思"></a>5. 总结与反思</h2><hr>
+
+    </div>
+
+    <!-- View Counter -->
+    
+        <div
+            style="text-align: center; margin-top: 40px; margin-bottom: 20px; font-size: 0.9em; color: rgba(215, 236, 255, 0.5); opacity: 0.8; letter-spacing: 1px;">
+            <i class="fa fa-eye" style="margin-right: 5px;"></i> 本文已被观测了<span id="busuanzi_value_page_pv"
+                style="color: #228dff; font-weight: bold;"><i class="fa fa-spinner fa-spin"></i></span> 次
+        </div>
+        
+
+            <!-- Post Navigation -->
+            
+                <div class="post-navigation">
+                    
+                        <a href="/2026/04/04/%E7%AE%97%E6%B3%95-%E6%95%B0%E7%BB%84-%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5%20II/" class="nav-prev">&laquo; 上一篇</a>
+                        
+
+                                <a href="/" class="nav-home">主页</a>
+
+                                
+                                    <a href="/2026/04/03/%E7%AE%97%E6%B3%95-%E6%95%B0%E7%BB%84-%E9%95%BF%E5%BA%A6%E6%9C%80%E5%B0%8F%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84/" class="nav-next">下一篇 &raquo;</a>
+                                    
+                </div>
+                
+
+                    <!-- Comments -->
+                    
+
+</div>
+        </section>
+
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-contact">
+                <h2><a href="/contact/">联系我</a></h2>
+                <p>
+                    山河为志，宇宙为疆。循此苦旅，以达星辰。
+                </p>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4 footer-friends">
+    <h2>友情链接</h2>
+    <ul>
+        <li>
+            <a class="footer-post" href="https://fartmonarch.xyz" target="_blank">Fartmonarch</a>
+        </li>
+        <li>
+            <a class="footer-post" href="https://bigpeter.top" target="_blank">BigPeter</a>
+        </li>
+        <li>
+            <a class="footer-post" href="https://jokerlove0626.github.io" target="_blank">JokerLove</a>
+        </li>
+    </ul>
+</div>
+            
+<div class="col-xs-6 col-sm-6 col-md-4 col-lg-4 footer-categories">
+    <h2>分类</h2>
+    <ul>
+        
+        <li>
+            <a class="footer-post" href="/categories/%E6%8A%80%E6%9C%AF/Agent/">Agent</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/%E6%8A%80%E6%9C%AF/MySQL/">MySQL</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/%E6%8A%80%E6%9C%AF/Redis/">Redis</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/%E6%95%99%E7%A8%8B/Hexo/">Hexo</a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    &copy; 2026 Astra. All right reserved | Design & Hexo Jonathan Klughertz
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+<!-- jQuery -->
+<script src="//cdn.staticfile.net/jquery/2.1.4/jquery.min.js"></script>
+
+<!-- Tween Max -->
+<script src="//cdn.staticfile.net/gsap/1.18.5/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdn.staticfile.net/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Custom JavaScript -->
+
+<script src="/js/main.js"></script>
+
+
+<!-- Disqus Comments -->
+
+
+
+<!-- Busuanzi Analytics -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+</body>
+
+</html>
+<!-- Rebuild Trigger V1 -->

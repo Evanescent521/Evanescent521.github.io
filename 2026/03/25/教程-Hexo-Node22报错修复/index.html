@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="如果你最近在 Windows 环境下升级了 Node.js v22，并且在使用 Hexo 搭建博客时发现：
+
+本地预览正常，但线上 GitHub Pages 样式全乱（404 找不到 CSS）。
+执行 hexo g 后，public/css 目录下空空如也，完全没有生成 style.css。
+执行 ">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="John Doe">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Node 22 环境下 Hexo 部署样式丢失与生成失败的踩坑指南"/>
+    
+
+    <!--Open Graph Description-->
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Astra"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    
+        <meta name="twitter:card" content="summary" />
+    
+    
+    
+
+    <!-- Title -->
+    
+    <title>Node 22 环境下 Hexo 部署样式丢失与生成失败的踩坑指南 - Astra</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//cdn.staticfile.net/twitter-bootstrap/4.0.0-alpha.2/css/bootstrap.min.css">
+
+    <!-- Custom Fonts -->
+    <link href="//cdn.staticfile.net/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//cdn.staticfile.net/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//cdn.staticfile.net/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdn.staticfile.net/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    <!-- Google Analytics -->
+    
+
+
+    <!-- Favicon -->
+    <link rel="icon" href="/img/favicon.png" type="image/x-icon">
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    主页
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    档案
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/search/">
+                    检索
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    分类
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact/">
+                    联系我
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<!-- Back Button Logic -->
+
+
+
+    <nav class="nav-left">
+        <a href="/categories/%E6%95%99%E7%A8%8B/Hexo/" id="back-button" title="返回上一级"></a>
+    </nav>
+    <script>
+        (function() {
+            var backBtn = document.getElementById('back-button');
+            if (backBtn && document.referrer && document.referrer.includes(window.location.host)) {
+                backBtn.onclick = function(e) {
+                    e.preventDefault();
+                    history.back();
+                };
+            }
+        })();
+    </script>
+
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/">
+            <img src="/img/star.png" class="logo-img" alt="Logo">
+        </a>
+        
+    </div>
+</header>
+
+        <section class="main">
+            <div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2026/03/25/%E6%95%99%E7%A8%8B-Hexo-Node22%E6%8A%A5%E9%94%99%E4%BF%AE%E5%A4%8D/">
+                Node 22 环境下 Hexo 部署样式丢失与生成失败的踩坑指南
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">
+                    2026-03-25
+                </span>
+                
+                    
+                            
+                                <span class="category">
+                                    <a href="/categories/教程/">教程</a>
+                                </span>
+                                
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+                    <!-- Post Content -->
+                    <p>如果你最近在 Windows 环境下升级了 <strong>Node.js v22</strong>，并且在使用 Hexo 搭建博客时发现：</p>
+<ol>
+<li><strong>本地预览正常，但线上 GitHub Pages 样式全乱（404 找不到 CSS）</strong>。</li>
+<li><strong>执行 <code>hexo g</code> 后，<code>public/css</code> 目录下空空如也，完全没有生成 <code>style.css</code></strong>。</li>
+<li><strong>执行 <code>hexo d</code> 时报错 <code>Exit Code 1</code>，提示在 “Copying files” 阶段强行退出</strong>。</li>
+</ol>
+<p>那么恭喜你，你撞上了 Node v22 与 Hexo 插件生态之间极其隐蔽的<strong>异步流冲突</strong>。本文将记录这一路排查的心路历程，并给出目前的终极解决方案。</p>
+<hr>
+<h2 id="1-现象分析：消失的-CSS"><a href="#1-现象分析：消失的-CSS" class="headerlink" title="1. 现象分析：消失的 CSS"></a>1. 现象分析：消失的 CSS</h2><p>问题的爆发点在于 Hexo 的样式渲染器（如 <code>hexo-renderer-stylus</code>）。</p>
+<p>在 Node 22 中，由于底层 V8 引擎对异步处理和文件流（fs）的内核改动，导致这些基于古老 <code>Bluebird</code> 承诺库的插件在处理磁盘 IO 时会发生<strong>静默崩溃</strong>。</p>
+<p><strong>具体表现为：</strong><br>当你运行 <code>hexo g</code> 时，控制台看起来风平浪静，但实际上 Stylus 渲染进程在读取 <code>.styl</code> 文件时已经悄悄锁死了。Hexo 框架为了保证流程不中断，会直接“跳过”出错的 CSS 编译环节。结果就是 <code>public</code> 文件夹虽然生成了，但最重要的样式表文件却不见了。</p>
+<hr>
+<h2 id="2-为什么官方部署插件会失效？"><a href="#2-为什么官方部署插件会失效？" class="headerlink" title="2. 为什么官方部署插件会失效？"></a>2. 为什么官方部署插件会失效？</h2><p>不仅是生成阶段，部署阶段的 <code>hexo-deployer-git</code> 也是重灾区。</p>
+<p>该插件在执行 <code>hexo d</code> 时，会尝试将 <code>public</code> 目录的文件拷贝到 <code>.deploy_git</code> 临时目录。在 Node 22 环境下，这个“拷贝文件”的动作会触发 Node 内核的流阻塞，导致进程直接抛出 <code>TypeError</code> 或 <code>Exit Code 1</code> 强行自杀。</p>
+<p>这也是为什么很多同学发现无论怎么重装插件，部署依然卡死在第一步的原因。</p>
+<hr>
+<h2 id="3-解决方案：一套组合拳"><a href="#3-解决方案：一套组合拳" class="headerlink" title="3. 解决方案：一套组合拳"></a>3. 解决方案：一套组合拳</h2><p>在没法立刻让插件作者更新代代码的前提下，我们采用了“底层绕后”的策略：</p>
+<h3 id="第一步：强制清除缓存（疏通管道）"><a href="#第一步：强制清除缓存（疏通管道）" class="headerlink" title="第一步：强制清除缓存（疏通管道）"></a>第一步：强制清除缓存（疏通管道）</h3><p>Hexo 的缓存文件 <code>db.json</code> 极易在崩溃时记录错误的文件指纹。在尝试任何操作前，必须执行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx hexo clean</span><br></pre></td></tr></table></figure>
+
+<h3 id="第二步：编写自动化部署脚本-deploy-bat（核心方案）"><a href="#第二步：编写自动化部署脚本-deploy-bat（核心方案）" class="headerlink" title="第二步：编写自动化部署脚本 deploy.bat（核心方案）"></a>第二步：编写自动化部署脚本 <code>deploy.bat</code>（核心方案）</h3><p>既然官方插件在 Node 22 下“水土不服”，我们干脆<strong>放弃插件，回归原生 Git</strong>。<br>我们在博客根目录创建了一个名为 <code>deploy.bat</code> 的批处理文件，逻辑如下：</p>
+<ol>
+<li><strong>自动 Clean &amp; Generate</strong>：确保每次都是从零开始编译。</li>
+<li><strong>加入“死活检查”机制</strong>：在推送前，脚本会自动检查 <code>public\css\style.css</code> 是否存在。如果没有生成，脚本会立即拦截报错，而不是把坏掉的包传上去。</li>
+<li><strong>原生 Git 推送</strong>：直接进入 <code>public</code> 目录，利用系统自带的 Git 命令进行强行推送（<code>git push -f</code>），彻底绕过 Node 插件的 Bug。</li>
+</ol>
+<blockquote>
+<p><strong>提示</strong>：这个脚本已经在我的仓库中上线，以后改完文章直接双击运行它，一键搞定生成+部署。</p>
+</blockquote>
+<hr>
+<h2 id="4-终极建议：回归稳定"><a href="#4-终极建议：回归稳定" class="headerlink" title="4. 终极建议：回归稳定"></a>4. 终极建议：回归稳定</h2><p>虽然 <code>deploy.bat</code> 解决了部署问题，但环境的隐患依然存在。</p>
+<p><strong>强烈建议：</strong><br>如果你追求极致的开发体验，请使用 <strong>Node.js v20 (LTS)</strong>。<br>Node 20 是目前 Hexo 生态支持度最高、最稳定的“黄金版本”。你可以使用 <code>nvm-windows</code> 工具轻松实现版本切换：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nvm install <span class="number">20.18</span>.<span class="number">0</span></span><br><span class="line">nvm use <span class="number">20.18</span>.<span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>技术之路就是不断拆解问题、降维打击的过程。当自动化的插件不再可靠，回归底层的命令行往往是最强力的武器。</p>
+<p>愿你的博客永远样式整齐，部署丝滑。</p>
+
+    </div>
+
+    <!-- View Counter -->
+    
+        <div
+            style="text-align: center; margin-top: 40px; margin-bottom: 20px; font-size: 0.9em; color: rgba(215, 236, 255, 0.5); opacity: 0.8; letter-spacing: 1px;">
+            <i class="fa fa-eye" style="margin-right: 5px;"></i> 本文已被观测了<span id="busuanzi_value_page_pv"
+                style="color: #228dff; font-weight: bold;"><i class="fa fa-spinner fa-spin"></i></span> 次
+        </div>
+        
+
+            <!-- Post Navigation -->
+            
+                <div class="post-navigation">
+                    
+                        <a href="/2026/03/30/%E6%95%99%E7%A8%8B-Astra-%E6%AC%A2%E8%BF%8E/" class="nav-prev">&laquo; 上一篇</a>
+                        
+
+                                <a href="/" class="nav-home">主页</a>
+
+                                
+                                        <span class="nav-none nav-next">下一篇 &raquo;</span>
+                                        
+                </div>
+                
+
+                    <!-- Comments -->
+                    
+
+</div>
+        </section>
+
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-contact">
+                <h2><a href="/contact/">联系我</a></h2>
+                <p>
+                    山河为志，宇宙为疆。循此苦旅，以达星辰。
+                </p>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4 footer-friends">
+    <h2>友情链接</h2>
+    <ul>
+        <li>
+            <a class="footer-post" href="https://fartmonarch.xyz" target="_blank">Fartmonarch</a>
+        </li>
+        <li>
+            <a class="footer-post" href="https://bigpeter.top" target="_blank">BigPeter</a>
+        </li>
+        <li>
+            <a class="footer-post" href="https://jokerlove0626.github.io" target="_blank">JokerLove</a>
+        </li>
+    </ul>
+</div>
+            
+<div class="col-xs-6 col-sm-6 col-md-4 col-lg-4 footer-categories">
+    <h2>分类</h2>
+    <ul>
+        
+        <li>
+            <a class="footer-post" href="/categories/%E6%8A%80%E6%9C%AF/Agent/">Agent</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/%E6%8A%80%E6%9C%AF/MySQL/">MySQL</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/%E6%8A%80%E6%9C%AF/Redis/">Redis</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/%E6%95%99%E7%A8%8B/Hexo/">Hexo</a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    &copy; 2026 Astra. All right reserved | Design & Hexo Jonathan Klughertz
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+<!-- jQuery -->
+<script src="//cdn.staticfile.net/jquery/2.1.4/jquery.min.js"></script>
+
+<!-- Tween Max -->
+<script src="//cdn.staticfile.net/gsap/1.18.5/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdn.staticfile.net/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Custom JavaScript -->
+
+<script src="/js/main.js"></script>
+
+
+<!-- Disqus Comments -->
+
+
+
+<!-- Busuanzi Analytics -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+</body>
+
+</html>
+<!-- Rebuild Trigger V1 -->

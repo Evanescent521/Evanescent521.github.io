@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="详解 Redis AOF 重写过程中的双写机制在 Redis 的持久化机制中，AOF（Append Only File）通过记录每一条写命令来保证数据的安全性。然而，随着运行时间的增加，AOF 文件会变得越来越大。为了解决这个问题，Redis 引入了 AOF 重写机制（BGREWRITEAOF）。
+">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="John Doe">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="详解 Redis AOF 重写过程中的双写机制"/>
+    
+
+    <!--Open Graph Description-->
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Astra"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    
+        <meta name="twitter:card" content="summary" />
+    
+    
+    
+
+    <!-- Title -->
+    
+    <title>详解 Redis AOF 重写过程中的双写机制 - Astra</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//cdn.staticfile.net/twitter-bootstrap/4.0.0-alpha.2/css/bootstrap.min.css">
+
+    <!-- Custom Fonts -->
+    <link href="//cdn.staticfile.net/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//cdn.staticfile.net/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//cdn.staticfile.net/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdn.staticfile.net/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    <!-- Google Analytics -->
+    
+
+
+    <!-- Favicon -->
+    <link rel="icon" href="/img/favicon.png" type="image/x-icon">
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    主页
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    档案
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/search/">
+                    检索
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    分类
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact/">
+                    联系我
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<!-- Back Button Logic -->
+
+
+
+    <nav class="nav-left">
+        <a href="/categories/%E6%8A%80%E6%9C%AF/Redis/" id="back-button" title="返回上一级"></a>
+    </nav>
+    <script>
+        (function() {
+            var backBtn = document.getElementById('back-button');
+            if (backBtn && document.referrer && document.referrer.includes(window.location.host)) {
+                backBtn.onclick = function(e) {
+                    e.preventDefault();
+                    history.back();
+                };
+            }
+        })();
+    </script>
+
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/">
+            <img src="/img/star.png" class="logo-img" alt="Logo">
+        </a>
+        
+    </div>
+</header>
+
+        <section class="main">
+            <div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2026/04/20/%E6%8A%80%E6%9C%AF-Redis-%E8%AF%A6%E8%A7%A3AOF%E9%87%8D%E5%86%99%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%9A%84%E5%8F%8C%E5%86%99%E6%9C%BA%E5%88%B6/">
+                详解 Redis AOF 重写过程中的双写机制
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">
+                    2026-04-20
+                </span>
+                
+                    
+                            
+                                <span class="category">
+                                    <a href="/categories/技术/">技术</a>
+                                </span>
+                                
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+                    <!-- Post Content -->
+                    <h1 id="详解-Redis-AOF-重写过程中的双写机制"><a href="#详解-Redis-AOF-重写过程中的双写机制" class="headerlink" title="详解 Redis AOF 重写过程中的双写机制"></a>详解 Redis AOF 重写过程中的双写机制</h1><p>在 Redis 的持久化机制中，AOF（Append Only File）通过记录每一条写命令来保证数据的安全性。然而，随着运行时间的增加，AOF 文件会变得越来越大。为了解决这个问题，Redis 引入了 <strong>AOF 重写机制（BGREWRITEAOF）</strong>。</p>
+<p>在 AOF 重写期间，Redis 需要同时处理客户端的写请求。为了防止数据丢失，Redis 采用了精妙的“双写”机制。本文将深入探讨 <strong>AOF 缓冲区</strong>与 <strong>AOF 重写缓冲区</strong>的作用及其重要性。</p>
+<h2 id="1-为什么需要重写？"><a href="#1-为什么需要重写？" class="headerlink" title="1. 为什么需要重写？"></a>1. 为什么需要重写？</h2><p>AOF 文件记录的是操作命令。例如，对同一个 Key 执行 100 次 <code>INCR</code>，AOF 会记录 100 条指令，但其实际效果等同于 1 条 <code>SET</code> 指令。重写机制就是通过读取当前数据库的状态，生成一份最小化的指令集来替换旧的 AOF 文件。</p>
+<h2 id="2-重写期间的“双写”挑战"><a href="#2-重写期间的“双写”挑战" class="headerlink" title="2. 重写期间的“双写”挑战"></a>2. 重写期间的“双写”挑战</h2><p>当 Redis 触发 <code>BGREWRITEAOF</code> 时，会 fork 出一个子进程来完成重写工作。</p>
+<ul>
+<li><strong>子进程</strong>：负责将此时此刻的数据库快照写入新的 AOF 文件。</li>
+<li><strong>父进程</strong>：继续处理客户端请求。</li>
+</ul>
+<p>关键问题在于：<strong>子进程在重写期间，父进程新接收到的指令该往哪放？</strong></p>
+<h3 id="2-1-AOF-缓冲区-AOF-Buffer"><a href="#2-1-AOF-缓冲区-AOF-Buffer" class="headerlink" title="2.1 AOF 缓冲区 (AOF Buffer)"></a>2.1 AOF 缓冲区 (AOF Buffer)</h3><p>父进程接收到的写指令会照常写入 <strong>AOF 缓冲区</strong>。这些指令会被定期同步到 <strong>旧的 AOF 文件</strong>。</p>
+<blockquote>
+<p><strong>为什么要写旧文件？</strong><br>这是为了防止在重写期间 Redis 突然宕机。如果重写还没完成（新 AOF 文件不完整），Redis 重启时仍然可以依靠旧的、包含了最新指令的 AOF 文件来恢复数据，确保零丢失。</p>
+</blockquote>
+<h3 id="2-2-AOF-重写缓冲区-AOF-Rewrite-Buffer"><a href="#2-2-AOF-重写缓冲区-AOF-Rewrite-Buffer" class="headerlink" title="2.2 AOF 重写缓冲区 (AOF Rewrite Buffer)"></a>2.2 AOF 重写缓冲区 (AOF Rewrite Buffer)</h3><p>同时，父进程会将这些新指令也写入一份到 <strong>AOF 重写缓冲区</strong>。</p>
+<blockquote>
+<p><strong>它的作用是什么？</strong><br>当子进程完成快照写入并退出后，父进程会将这个重写缓冲区中的内容追加到 <strong>新的 AOF 文件</strong> 中。这样，新 AOF 文件就追平了重写期间发生的所有变更。最后，用新 AOF 文件原子替换旧文件。</p>
+</blockquote>
+<h2 id="3-核心总结：防止数据丢失的盾牌"><a href="#3-核心总结：防止数据丢失的盾牌" class="headerlink" title="3. 核心总结：防止数据丢失的盾牌"></a>3. 核心总结：防止数据丢失的盾牌</h2><p>用户提到的“宕机导致丢失”正是这套机制要解决的核心痛点。</p>
+<p>如果没有 AOF 缓冲区（即不写旧文件）：</p>
+<ul>
+<li>场景：重写执行到 50%，服务器宕机。</li>
+<li>结果：新 AOF 文件未产生，旧 AOF 文件缺失了重写期间产生的 50% 时间段内的写操作。重启后数据严重丢失。</li>
+</ul>
+<p>有了“双写”：</p>
+<ul>
+<li>场景：重写期间宕机。</li>
+<li>结果：新 AOF 虽然丢了，但<strong>旧 AOF 文件依然保持着最新的完整记录</strong>（因为 AOF 缓冲区一直在工作）。这才是 Redis 高可靠性的体现。</li>
+</ul>
+<blockquote>
+<p><strong>注意</strong>：在 Redis 7.0 之后，引入了 Multi-Part AOF 机制，通过 Base + Incremental 文件的方式解决了重写缓冲区占用过度内存的问题，但其核心逻辑（保留增量修改以防丢失）依然一脉相承。</p>
+</blockquote>
+
+    </div>
+
+    <!-- View Counter -->
+    
+        <div
+            style="text-align: center; margin-top: 40px; margin-bottom: 20px; font-size: 0.9em; color: rgba(215, 236, 255, 0.5); opacity: 0.8; letter-spacing: 1px;">
+            <i class="fa fa-eye" style="margin-right: 5px;"></i> 本文已被观测了<span id="busuanzi_value_page_pv"
+                style="color: #228dff; font-weight: bold;"><i class="fa fa-spinner fa-spin"></i></span> 次
+        </div>
+        
+
+            <!-- Post Navigation -->
+            
+                <div class="post-navigation">
+                    
+                        <a href="/2026/04/21/%E6%8A%80%E6%9C%AF-MySQL-%E8%AF%A6%E8%A7%A3%E7%B4%A2%E5%BC%95%E4%B8%8B%E6%8E%A8(ICP)/" class="nav-prev">&laquo; 上一篇</a>
+                        
+
+                                <a href="/" class="nav-home">主页</a>
+
+                                
+                                    <a href="/2026/04/19/%E6%8A%80%E6%9C%AF-Redis-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3Redis%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8%E4%B8%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B/" class="nav-next">下一篇 &raquo;</a>
+                                    
+                </div>
+                
+
+                    <!-- Comments -->
+                    
+
+</div>
+        </section>
+
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-contact">
+                <h2><a href="/contact/">联系我</a></h2>
+                <p>
+                    山河为志，宇宙为疆。循此苦旅，以达星辰。
+                </p>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4 footer-friends">
+    <h2>友情链接</h2>
+    <ul>
+        <li>
+            <a class="footer-post" href="https://fartmonarch.xyz" target="_blank">Fartmonarch</a>
+        </li>
+        <li>
+            <a class="footer-post" href="https://bigpeter.top" target="_blank">BigPeter</a>
+        </li>
+        <li>
+            <a class="footer-post" href="https://jokerlove0626.github.io" target="_blank">JokerLove</a>
+        </li>
+    </ul>
+</div>
+            
+<div class="col-xs-6 col-sm-6 col-md-4 col-lg-4 footer-categories">
+    <h2>分类</h2>
+    <ul>
+        
+        <li>
+            <a class="footer-post" href="/categories/%E6%8A%80%E6%9C%AF/Agent/">Agent</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/%E6%8A%80%E6%9C%AF/MySQL/">MySQL</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/%E6%8A%80%E6%9C%AF/Redis/">Redis</a>
+        </li>
+        
+        <li>
+            <a class="footer-post" href="/categories/%E6%95%99%E7%A8%8B/Hexo/">Hexo</a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    &copy; 2026 Astra. All right reserved | Design & Hexo Jonathan Klughertz
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+<!-- jQuery -->
+<script src="//cdn.staticfile.net/jquery/2.1.4/jquery.min.js"></script>
+
+<!-- Tween Max -->
+<script src="//cdn.staticfile.net/gsap/1.18.5/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdn.staticfile.net/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Custom JavaScript -->
+
+<script src="/js/main.js"></script>
+
+
+<!-- Disqus Comments -->
+
+
+
+<!-- Busuanzi Analytics -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+</body>
+
+</html>
+<!-- Rebuild Trigger V1 -->
